@@ -1,0 +1,59 @@
+<mat-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="firstStepFormGroup" label="Step 1">
+    <form [formGroup]="firstStepFormGroup" #firstStepFormDirective="ngForm">
+      <div class="formGroupContainer">
+        <mat-form-field appearance="fill">
+          <mat-label>Login</mat-label>
+          <input matInput formControlName="login" required>
+          <mat-error *ngIf="login?.hasError('required')">Login is a required field</mat-error>
+          <mat-error *ngIf="login?.hasError('email')">Login must be a valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput matInput type="password" formControlName="password" required (input)="onPasswordInput()">
+          <mat-error *ngIf="password?.hasError('required')">Password is a required field</mat-error>
+          <mat-error *ngIf="!password?.hasError('required') && firstStepFormGroup.hasError('passwordBadFormat')">Password must contain min 1 digit and min 1 upercase letter</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm password</mat-label>
+          <input matInput matInput type="password" formControlName="confirmPassword" required (input)="onPasswordConfirmationInput()">
+          <mat-error *ngIf="confirmPassword?.hasError('required')">Password confirmation is required field</mat-error>
+          <mat-error *ngIf="!confirmPassword?.hasError('required') && firstStepFormGroup.hasError('passwordMismatch')">Confirm password must be the same with password</mat-error>
+        </mat-form-field>
+        <div class="mat-form-field">
+          <mat-checkbox formControlName="agreeRegistration">Agree to work for food</mat-checkbox>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperNext [disabled]="firstStepFormGroup.invalid">Go to step 2</button>
+      </div>
+    </form>
+  </mat-step>
+  
+  <mat-step [stepControl]="secondStepFormGroup" label="Step 2">  
+    <form [formGroup]="secondStepFormGroup" #secondStepFormDirective="ngForm">
+      <div class="formGroupContainer">
+        <mat-form-field>
+          <mat-select formControlName="country" placeholder="Select country">
+            <mat-option *ngFor="let country of countriesList" [value]="country.id">
+              {{country.title}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="country?.hasError('required')">Country a required field</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="province" placeholder="Pleace select country first" [(ngModel)]="selectedProvinceId">
+            <mat-option *ngFor="let province of provincesList" [value]="province.id">
+              {{province.title}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="province?.hasError('required')">Country a required field</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button [disabled]="secondStepFormGroup.invalid" (click)="save()">Save</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>
