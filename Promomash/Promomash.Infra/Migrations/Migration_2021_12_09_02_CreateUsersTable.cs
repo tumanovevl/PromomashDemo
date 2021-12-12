@@ -41,8 +41,8 @@ namespace Promomash.Demo.Infra.Migrations
         {
             Delete.Index(table: _usersTableName, column: "Login");
 
-            Create.UniqueConstraint("UK_Login")
-                .OnTable(_usersTableName)
+            Delete.UniqueConstraint("UK_Login")
+                .FromTable(_usersTableName)
                 .Column("Login");
 
             Delete.ForeignKey(table: _usersTableName, column: "CountryId", toTable: _countriesTableName);

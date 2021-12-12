@@ -125,11 +125,16 @@ namespace Promomash
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
+            if (!this._environment.IsProduction())
+            {
+                app.UseSwaggerUi3(settings => {
+                    settings.Path = "/api";
+                    settings.DocumentPath = "/api/specification.json";
+                });
+            }
+
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
@@ -138,14 +143,6 @@ namespace Promomash
                     //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
-
-            if (!this._environment.IsProduction())
-            {
-                app.UseSwaggerUi3(settings => {
-                    settings.Path = "/api";
-                    settings.DocumentPath = "/api/specification.json";
-                });
-            }
         }
     }
 }
