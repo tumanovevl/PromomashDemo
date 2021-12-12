@@ -17,9 +17,9 @@
     <None Remove="FakesAssemblies\**" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Promomash.Common.Demo\Promomash.Common.csproj" />
+    <ProjectReference Include="..\Promomash.Common\Promomash.Common.csproj" />
     <ProjectReference Include="..\Promomash.Common.Infra\Promomash.Common.Infra.csproj" />
-    <ProjectReference Include="..\Promomash.Domain\Promomash.Demo.Common.csproj" />
+    <ProjectReference Include="..\Promomash.Demo.Common\Promomash.Demo.Common.csproj" />
   </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '16.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

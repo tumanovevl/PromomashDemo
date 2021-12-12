@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Promomash.Domain\Promomash.Demo.Common.csproj" />
-    <ProjectReference Include="..\Promomash.Infra\Promomash.Demo.Infra.csproj" />
-    <ProjectReference Include="..\Promomash\Promomash.Demo.App.csproj" />
+    <ProjectReference Include="..\Promomash.Demo.Common\Promomash.Demo.Common.csproj" />
+    <ProjectReference Include="..\Promomash.Demo.Infra\Promomash.Demo.Infra.csproj" />
+    <ProjectReference Include="..\Promomash.Demo.App\Promomash.Demo.App.csproj" />
   </ItemGroup>
 
 </Project>

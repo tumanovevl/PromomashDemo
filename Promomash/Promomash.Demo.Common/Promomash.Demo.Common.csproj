@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Promomash.Common.Demo\Promomash.Common.csproj" />
+    <ProjectReference Include="..\Promomash.Common\Promomash.Common.csproj" />
   </ItemGroup>
 
 </Project>
